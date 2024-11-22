@@ -2,7 +2,7 @@
 Companion Codes for the paper: A multimodal robot internal model for visual imitation from others。
 
 ## Install 
-The training codes can be directly used in out docker image:
+The training codes can be directly used in our docker image:
 ```bash
 docker pull ruidong14/ros_torch:latest
 ```
@@ -22,3 +22,7 @@ docker pull ruidong14/ros_torch:latest
       ```bash
       python3 train_metric.py
       ```
+ 4. You can test out our mental simulation function without real robots in /model/test_mvae.ipynb
+ 5. real-robot.py is the example code to control real sawyer robot via ROS.  For the real-world experiment, you will need to install the Sawyer ROS package: 
+    https://support.rethinkrobotics.com/support/solutions/folders/80000686868.
+
