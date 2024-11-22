@@ -1,6 +1,8 @@
 # Cognitive_for_Imitation
-Companion Codes for the paper:A multimodal robot internal model for visual imitation from others
 Companion Codes for the paper: A multimodal robot internal model for visual imitation from others.
+
+## Datasets
+Example data can be found at: https://drive.google.com/drive/folders/1j-eLQt_qdH-ODAaCzA6Ws3kFzYM0o7OU?usp=sharing
 
 ## Install 
 The training codes can be directly used in our docker image:
