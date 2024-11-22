@@ -15,9 +15,9 @@ import matplotlib.pyplot as plt
 class Hparams:
     def __init__(self):
         # Data path
-        self.babbling_data='/docker-ros/local_ws/catkin_ws/src/data_collection/sawyer_all2'
-        self.anchor_data='/docker-ros/local_ws/catkin_ws/src/data_collection/test_marker'
-        self.compare_data='/docker-ros/local_ws/catkin_ws/src/data_collection/test_marker'
+        self.babbling_data='/docker-ros/local_ws/catkin_ws/src/data_collection/sawyer_data'
+        self.anchor_data='/docker-ros/local_ws/catkin_ws/src/data_collection/human_sample'
+        self.compare_data='/docker-ros/local_ws/catkin_ws/src/data_collection/human_sample'
         self.embedding_data='/docker-ros/local_ws/catkin_ws/src/data_collection/embed'
         self.diff_data='/docker-ros/local_ws/Cognative_for_Imitation/data/diff.csv'
         self.action_data='/docker-ros/local_ws/Cognative_for_Imitation/data/action.csv'
