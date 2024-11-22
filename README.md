@@ -3,6 +3,7 @@ Companion Codes for the paper: A multimodal robot internal model for visual imit
 
 ## Datasets
 Example data can be found at: https://drive.google.com/drive/folders/1j-eLQt_qdH-ODAaCzA6Ws3kFzYM0o7OU?usp=sharing
+Should put the dataset in the data folder and modify the root path in /model/util/helper.py/Hparams class.
 
 ## Install 
 The training codes can be directly used in our docker image:
@@ -25,8 +26,9 @@ docker pull ruidong14/ros_torch:latest
       ```bash
       python3 train_metric.py
       ```
- 4. You can test out our mental simulation function without real robots in /model/test_mvae.ipynb
- 5. real-robot.py is the example code to control real sawyer robot via ROS.  For the real-world experiment, you will need to install the Sawyer ROS package: 
+ 4. You can test out our mental simulation function without real robots in /model/test_mvae.ipynb:
+    - Can see the mental simulation result in m_s_result_ours and ms_result_AIF folder.
+ 6. real-robot.py is the example code to control real sawyer robot via ROS.  For the real-world experiment, you will need to install the Sawyer ROS package: 
     https://support.rethinkrobotics.com/support/solutions/folders/80000686868.
 
 
