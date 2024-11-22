@@ -1,3 +1,6 @@
+#!/usr/bin/env python3
+#####Training function for other's encoder
+
 import torch
 import torchvision.models as models
 import numpy as np

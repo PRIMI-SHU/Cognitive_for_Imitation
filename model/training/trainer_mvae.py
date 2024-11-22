@@ -1,3 +1,4 @@
+#!/usr/bin/env python3
 from trainer import Trainer
 import torch
 import numpy as np

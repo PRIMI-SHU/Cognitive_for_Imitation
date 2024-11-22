@@ -1,4 +1,5 @@
 #!/usr/bin/env python3
+####Real robot experiment, should put it in the ROS package for controlling
 import rospy,os,sys
 import torch
 import torch.nn as nn
@@ -117,10 +118,6 @@ class MVAE_Dynamic():
         
         init_image = self.s_v.squeeze().detach().cpu().numpy()
 
-        # 去除 batch 和 channel 维度，将其转换为 (128, 128)
-        
-
-        # 将图像值缩放到 0-255 范围（OpenCV 需要图像在 0-255 范围内）
         image_numpy = (init_image * 255).astype(np.uint8)
         
         cv2.imwrite(f"{index}.jpg", image_numpy)
@@ -142,43 +139,20 @@ class MVAE_Dynamic():
             img1=goal*255
             im1=img1.detach().cpu().numpy()
             im1=im1.transpose(1, 2, 0)
-
-
-            points = box.reshape((-1, 1, 2))
-
-            # 填充多边形（mask）
             cv2.circle(background_img, (center_x, center_y), 5, (0, 0, 255), -1)
-            # cv2.polylines(background_img, [box], isClosed=True, color=(0, 255, 0), thickness=2)
             x_start,x_end=0,640
             y_start,y_end=110,480
             background_img=background_img[y_start:y_end, x_start:x_end]
 
-
-            # 获取背景图的尺寸
-            bg_height, bg_width, _ = background_img.shape
-
             scale_factor = 1.3
 
-            # 计算缩小后的图片尺寸
             new_width = int(im1.shape[1] * scale_factor)
             new_height = int(im1.shape[0] * scale_factor)
 
-            # 缩小图片
+            
             resized_overlay_img = cv2.resize(im1, (new_width, new_height))
             resized_overlay_img = cv2.cvtColor(resized_overlay_img, cv2.COLOR_GRAY2BGR)
-            # 获取背景图左下方的位置
-            x_offset = 0  # 左侧
-            y_offset = 0  # 上方
-            # background_img[y_offset:y_offset+new_height, x_offset:x_offset+new_width] = resized_overlay_img
-
-            text = "Human Demo"
-            font = cv2.FONT_HERSHEY_SIMPLEX
-            font_scale = 0.5
-            font_color = (0, 255, 0)  # 白色文字
-            thickness = 2
-            text_position = (28, 181)  # 在图片上方，向上偏移10个像素
-            # cv2.putText(background_img, text, text_position, font, font_scale, font_color, thickness)
-            
+         
             color_msg = self.bridge.cv2_to_imgmsg(background_img, encoding="bgr8")
             color_msg.header.stamp=rospy.Time.now()
             self.color_pub.publish(color_msg)
@@ -234,7 +208,6 @@ class MVAE_Dynamic():
         joints,_=self.get_joints()
         
         joints[0],joints[2],joints[3],joints[4],joints[5]=joints[0]+action[0],joints[2]+action[1],joints[3]+action[2],joints[4]+action[3],joints[5]+action[4]
-        # joints=np.array(joints)+np.array(action)
         joints=list(joints)
         joints.append(0.0842041015625)
         self.arm.set_joint_value_target(joints)
@@ -305,7 +278,7 @@ if __name__=='__main__':
     
     rate=rospy.Rate(10)
     
-    image_thread = threading.Thread(target=publish_image, args=(agent, rate))
+    image_thread = threading.Thread(target=publish_image, args=(agent, rate))  ##mutli threading function for displaying the ground truth 3D pint in camera space
     image_thread.start()
     
     joint1=agent.reset(joint_start)

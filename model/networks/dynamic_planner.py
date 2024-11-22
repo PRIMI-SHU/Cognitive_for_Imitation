@@ -1,10 +1,7 @@
-# -*- coding: utf-8 -*-
-"""
-Created on Mon Apr 26 18:56:11 2021
+#!/usr/bin/env python3
 
-@author: mrd
-This the function for nueral dynamic planner
-"""
+###This the model for nueral dynamic planner
+
 import torch
 import torch.nn as nn
 import torch.autograd as autograd

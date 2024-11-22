@@ -37,20 +37,6 @@ class Agent():
         self.tip_hat=torch.zeros((1,3),dtype=torch.float).to(device)
         self.error_joints=[]
         
-        # df=pd.read_csv('/docker-ros/local_ws/Metric_Internal_Model/image_std.csv')
-        # self.Im_std=torch.tensor(df.values[:,1:]).reshape(1,1,128,128)
-        # self.Im_std=self.Im_std.to(device)
-        # df=pd.read_csv('/docker-ros/local_ws/Metric_Internal_Model/joint_std.csv')
-        # self.mu_std=torch.tensor(df.values[:,1:]).reshape(1,3)
-        # self.mu_std=self.mu_std.to(device)
-        # df=pd.read_csv('/docker-ros/local_ws/Metric_Internal_Model/tip_std.csv')
-        # self.tip_std=torch.tensor(df.values[:,1:]).reshape(1,3)
-        # self.tip_std=self.tip_std.to(device)
-        
-        
-        # self.SigmaP_yq0 = np.zeros((3, 3))
-        # for i in range(3):
-        #     self.SigmaP_yq0[i,i]=1/2.55
         self.act = np.zeros(3, float)
         
     #########Active Inference
@@ -79,18 +65,6 @@ class Agent():
  
         return self.Im_hat,self.mu_hat,self.tip_hat
     
-    def perception_std(self,joint):
-        self.Im_hat,self.mu_hat,self.tip_hat,grad_Im,grad_mu,grad_Tip=self.vae.perception_std(self.z1,self.Im_attr,self.mu_attr,self.tip_attr,self.Im_std,self.mu_std,self.tip_std)
-        self.z1_dot=(0.2*grad_Im+0.6*grad_mu+0.2*grad_Tip)
-        self.z1=self.z1_dot+self.z1
-        error=self.mu_hat-joint
-        
-        error=error.detach().cpu().numpy()[0]
-        
-        self.error_joints.append(error.tolist())
-        
-        
-        return error,self.Im_hat,self.mu_hat
         
     def get_dz1(self,visual):
         self.Im_hat, self.mu_hat, grad_Im, grad_mu = self.vae.perception(self.z1,visual,self.mu_attr)
@@ -115,7 +89,7 @@ class Agent():
         
         self.act=diff*(1/2.55)
         return self.act
-    ######### Mental Association   
+    ######### Our framework  
     def translate_data_format(self,array):
         if torch.is_tensor(array):
             return array.detach().cpu().numpy()
