@@ -2,7 +2,7 @@
 Companion Codes for the paper: A multimodal robot internal model for visual imitation from others.
 
 ## Datasets
-Example data can be found at: https://drive.google.com/drive/folders/1j-eLQt_qdH-ODAaCzA6Ws3kFzYM0o7OU?usp=sharing
+Example data can be found at: https://drive.google.com/drive/folders/1j-eLQt_qdH-ODAaCzA6Ws3kFzYM0o7OU?usp=sharing.
 Should put the dataset in the data folder and modify the root path in /model/util/helper.py/Hparams class.
 
 ## Install 
