@@ -11,9 +11,9 @@ docker pull ruidong14/ros_torch:latest
 2. /model/networks/metric.py and mvae.py: contains the Multimodal Varational AutoEncoder and Triplet Network models written in pytorch.
 3. In the /model/training folder.
    - First, train the MVAE internal model:   
-    ```bash
-    python3 trainer_mvae.py
-    ```
+       ```bash
+       python3 trainer_mvae.py
+       ```
    - Save the trained visual embeddings:
       ```bash
       python3 save_embedding.py
