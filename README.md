@@ -26,9 +26,13 @@ docker pull ruidong14/ros_torch:latest
       ```bash
       python3 train_metric.py
       ```
+   - Train the dynamic planner:
+      ```bash
+      python3 trainer_NDP.py
+      ```
  4. You can test out our mental simulation function without real robots in /model/test_mvae.ipynb:
-    - Can see the mental simulation result in m_s_result_ours and ms_result_AIF folder.
- 6. real-robot.py is the example code to control real sawyer robot via ROS.  For the real-world experiment, you will need to install the Sawyer ROS package: 
+    - Can see the mental simulation result in m_s_result_ours and ms_result_AIF folders.
+ 6. real-robot.py is the example code to control a real sawyer robot via ROS.  For the real-world experiment, you will need to install the Sawyer ROS package: 
     https://support.rethinkrobotics.com/support/solutions/folders/80000686868.
 
 
