@@ -1,5 +1,5 @@
 # Cognitive_for_Imitation
-Companion Codes for the paper: A general framework for robot visual imitation from others
+Codes for the paper: A multimodal framework for robot visual imitation from others
 
 ## Datasets
 Example data can be found at: https://drive.google.com/drive/folders/1j-eLQt_qdH-ODAaCzA6Ws3kFzYM0o7OU?usp=sharing.
